@@ -23,6 +23,15 @@ class ApplicationController < ActionController::Base
   end
 
   def set_user
-    @user = User.find_by(id: session[:user_id])
+    @user = User.find(session[:user_id])
+  end
+
+  def authorized?
+    unless authorized_user?
+      render json: {
+        status: 401,
+        errors: :unauthorized
+      }
+    end
   end
 end

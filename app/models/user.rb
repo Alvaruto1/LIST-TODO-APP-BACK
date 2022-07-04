@@ -6,7 +6,7 @@ class User
   field :email, type: String, default: ''
   field :password_digest, type: String, default: ''
   field :username, type: String, default: ''
-  has_one :own_group, class_name: 'GroupList', inverse_of: 'owner'
+  has_many :group_lists
 
   validates :username, presence: true
   validates :username, uniqueness: true

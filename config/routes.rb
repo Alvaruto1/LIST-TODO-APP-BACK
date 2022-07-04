@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  resource :group_list, only: %i[show update destroy create]
-  resource :item, only: %i[show update destroy create]
-  resource :list, only: %i[show update destroy create]
+  resources :group_lists, only: %i[show update destroy create index] do
+    resources :lists, only: %i[show update destroy create index] do
+      resources :items, only: %i[show update destroy create index]
+    end
+  end
+  
+  
 
   resource :users, only: %i[create show index], path_names: { create: 'signup' }
 
