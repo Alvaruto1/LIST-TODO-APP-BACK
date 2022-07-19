@@ -10,6 +10,21 @@ namespace :seed_states do
 
   desc 'get states'
   task get: :environment do
-    puts State.all()
+    states = State.all
+    states.each do |state|
+      puts state.name
+    end
+  end
+
+  desc 'set state items'
+  task set_state_items: :environment do
+    items = Item.all
+    items.each do |item|
+      puts item['state']
+      if item['state'] == nil
+        item['state'] = State.find_by(name: 'pending')
+        item.save
+      end
+    end
   end
 end

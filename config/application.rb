@@ -26,8 +26,8 @@ module Backend
     config.action_dispatch.default_headers.merge!({ 'X-Frame-Options' => 'ALLOW-FROM http://localhost:3001' })
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
-    config.web_console.whitelisted_ips = '172.24.0.0/16'
-    
+    config.web_console.permissions = '172.29.0.1'
+    # config.web_console.whitelisted_ips = '172.24.0.0/16'
 
     # Configuration for the application, engines, and railties goes here.
     #

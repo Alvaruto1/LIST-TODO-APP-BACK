@@ -2,6 +2,6 @@ class Item
   include Mongoid::Document
   include Mongoid::Timestamps
   field :description, type: String
-  has_one :state
   belongs_to :list
+  belongs_to :state, inverse_of: :items
 end
